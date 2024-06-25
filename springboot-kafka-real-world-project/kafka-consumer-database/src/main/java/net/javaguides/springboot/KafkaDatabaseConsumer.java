@@ -12,7 +12,7 @@ public class KafkaDatabaseConsumer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaDatabaseConsumer.class);
 
-    private WikimediaDataRepository dataRepository;
+    private final WikimediaDataRepository dataRepository;
 
     public KafkaDatabaseConsumer(WikimediaDataRepository dataRepository) {
         this.dataRepository = dataRepository;
@@ -22,7 +22,7 @@ public class KafkaDatabaseConsumer {
             topics = "${spring.kafka.topic.name}",
             groupId = "${spring.kafka.consumer.group-id}"
     )
-    public void consume(String eventMessage){
+    public void consume(String eventMessage) {
 
         LOGGER.info(String.format("Event message received -> %s", eventMessage));
 
