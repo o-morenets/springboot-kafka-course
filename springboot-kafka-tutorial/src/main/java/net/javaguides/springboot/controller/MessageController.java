@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/kafka")
 public class MessageController {
 
-    private KafkaProducer kafkaProducer;
+    private final KafkaProducer kafkaProducer;
 
     public MessageController(KafkaProducer kafkaProducer) {
         this.kafkaProducer = kafkaProducer;
@@ -19,7 +19,7 @@ public class MessageController {
 
     // http:localhost:8080/api/v1/kafka/publish?message=hello world
     @GetMapping("/publish")
-    public ResponseEntity<String> publish(@RequestParam("message") String message){
+    public ResponseEntity<String> publish(@RequestParam("message") String message) {
         kafkaProducer.sendMessage(message);
         return ResponseEntity.ok("Message sent to the topic");
     }
