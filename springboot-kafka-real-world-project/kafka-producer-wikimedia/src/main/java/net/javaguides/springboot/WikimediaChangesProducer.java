@@ -19,14 +19,15 @@ public class WikimediaChangesProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WikimediaChangesProducer.class);
 
-    private KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
     public WikimediaChangesProducer(KafkaTemplate<String, String> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
     public void sendMessage() throws InterruptedException {
-        // to read real time stream data from wikimedia, we use event source
+
+        // to read real time stream data from wikimedia, we use event source:
         EventHandler eventHandler = new WikimediaChangesHandler(kafkaTemplate, topicName);
         String url = "https://stream.wikimedia.org/v2/stream/recentchange";
         EventSource.Builder builder = new EventSource.Builder(eventHandler, URI.create(url));
