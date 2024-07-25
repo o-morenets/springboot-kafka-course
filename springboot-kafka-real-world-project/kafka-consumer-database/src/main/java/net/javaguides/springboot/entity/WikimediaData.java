@@ -1,9 +1,8 @@
 package net.javaguides.springboot.entity;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "wikimedia_recentchange")

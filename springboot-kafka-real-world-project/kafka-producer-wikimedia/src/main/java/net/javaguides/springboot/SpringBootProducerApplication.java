@@ -1,5 +1,6 @@
 package net.javaguides.springboot;
 
+import net.javaguides.springboot.event.WikimediaChangesProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,6 +18,6 @@ public class SpringBootProducerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        wikimediaChangesProducer.sendMessage();
+//        wikimediaChangesProducer.startPublishing(); // FIXME if needed publishing via events
     }
 }

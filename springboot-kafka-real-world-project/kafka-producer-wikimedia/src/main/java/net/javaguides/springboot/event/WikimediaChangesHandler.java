@@ -1,27 +1,21 @@
-package net.javaguides.springboot;
+package net.javaguides.springboot.event;
 
 import com.launchdarkly.eventsource.EventHandler;
 import com.launchdarkly.eventsource.MessageEvent;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 
+@Slf4j
+@RequiredArgsConstructor
 public class WikimediaChangesHandler implements EventHandler {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(WikimediaChangesHandler.class);
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private final String topic;
 
-    public WikimediaChangesHandler(KafkaTemplate<String, String> kafkaTemplate, String topic) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.topic = topic;
-    }
-
     @Override
     public void onMessage(String s, MessageEvent messageEvent) throws Exception {
-        LOGGER.info(String.format("event data -> %s", messageEvent.getData()));
-
+        log.info(String.format("event data -> %s", messageEvent.getData()));
         kafkaTemplate.send(topic, messageEvent.getData());
     }
 
