@@ -1,4 +1,4 @@
-package net.javaguides.springboot;
+package net.javaguides.springboot.consumer;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
