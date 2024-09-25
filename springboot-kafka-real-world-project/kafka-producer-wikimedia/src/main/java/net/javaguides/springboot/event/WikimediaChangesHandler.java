@@ -15,7 +15,7 @@ public class WikimediaChangesHandler implements EventHandler {
 
     @Override
     public void onMessage(String s, MessageEvent messageEvent) throws Exception {
-        log.info(String.format("event data -> %s", messageEvent.getData()));
+        log.info("event data: '{}'", messageEvent.getData());
         kafkaTemplate.send(topic, messageEvent.getData());
     }
 

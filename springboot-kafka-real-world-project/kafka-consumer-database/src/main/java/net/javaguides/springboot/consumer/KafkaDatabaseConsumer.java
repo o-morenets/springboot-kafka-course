@@ -16,7 +16,7 @@ public class KafkaDatabaseConsumer {
 
     @KafkaListener(topics = "${spring.kafka.topic.name}", groupId = "${spring.kafka.consumer.group-id}")
     public void consume(String eventMessage) {
-        log.info(String.format("Event message received -> %s", eventMessage));
+        log.info("Event message received: '{}'", eventMessage);
 
         WikimediaData wikimediaData = new WikimediaData();
         wikimediaData.setWikiEventData(eventMessage);
