@@ -26,7 +26,7 @@ public class JsonKafkaProducer {
 
     public void sendMessage(User data) {
 
-        LOGGER.info(String.format("Message sent -> %s", data.toString()));
+        LOGGER.info("Message sent: '{}'", data.toString());
 
         Message<User> message = MessageBuilder
                 .withPayload(data)
