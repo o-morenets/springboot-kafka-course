@@ -12,6 +12,9 @@ public class WikimediaStreamConsumer {
     private final WebClient webClient;
     private final WikimediaProducer producer;
 
+    /**
+     * Consume messages from WebClient and publish them via WikimediaProducer
+     */
     public void consumeStreamAndPublish() {
         webClient.get()
                 .uri("/stream/recentchange")
