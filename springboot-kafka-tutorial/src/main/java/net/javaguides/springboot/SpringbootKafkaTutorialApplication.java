@@ -9,5 +9,4 @@ public class SpringbootKafkaTutorialApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootKafkaTutorialApplication.class, args);
     }
-
 }

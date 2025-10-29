@@ -14,14 +14,14 @@ public class KafkaProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaProducer.class);
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public KafkaProducer(KafkaTemplate<String, String> kafkaTemplate) {
+    public KafkaProducer(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(String message) {
-        LOGGER.info("Message sent: '{}'", message);
+    public void sendMessage(Object message) {
+        LOGGER.info("Message sent: {}", message);
         kafkaTemplate.send(topicName, message);
     }
 }

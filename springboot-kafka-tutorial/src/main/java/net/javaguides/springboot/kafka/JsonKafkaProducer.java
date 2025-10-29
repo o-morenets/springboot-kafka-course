@@ -1,6 +1,5 @@
 package net.javaguides.springboot.kafka;
 
-import net.javaguides.springboot.payload.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,21 +17,18 @@ public class JsonKafkaProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonKafkaProducer.class);
 
-    private final KafkaTemplate<String, User> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
-    public JsonKafkaProducer(KafkaTemplate<String, User> kafkaTemplate) {
+    public JsonKafkaProducer(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(User data) {
-
-        LOGGER.info("Message sent: '{}'", data.toString());
-
-        Message<User> message = MessageBuilder
+    public void sendMessage(Object data) {
+        LOGGER.info("Message sent: {}", data);
+        Message<Object> message = MessageBuilder
                 .withPayload(data)
                 .setHeader(KafkaHeaders.TOPIC, topicJsonName)
                 .build();
-
         kafkaTemplate.send(message);
     }
 }

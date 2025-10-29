@@ -1,0 +1,24 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: myGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    topic:
+      name: wikimedia_stream
+
+  datasource:
+    url: jdbc:mysql://localhost:3406/wikimedia
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
