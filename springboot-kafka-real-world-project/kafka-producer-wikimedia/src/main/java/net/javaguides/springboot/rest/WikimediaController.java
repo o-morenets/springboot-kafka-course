@@ -2,7 +2,8 @@ package net.javaguides.springboot.rest;
 
 import lombok.RequiredArgsConstructor;
 import net.javaguides.springboot.stream.WikimediaStreamConsumer;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +14,15 @@ public class WikimediaController {
 
     private final WikimediaStreamConsumer streamConsumer;
 
-    @GetMapping("/start")
-    public void startPublishing() {
+    @PostMapping("/start")
+    public ResponseEntity<String> startPublishing() {
         streamConsumer.consumeStreamAndPublish();
+        return ResponseEntity.ok("Wikimedia stream consumption started");
+    }
+    
+    @PostMapping("/stop")
+    public ResponseEntity<String> stopPublishing() {
+        streamConsumer.stopConsuming();
+        return ResponseEntity.ok("Wikimedia stream consumption stopped");
     }
 }
