@@ -1,0 +1,39 @@
+{
+  "$schema": "/mediawiki/recentchange/1.0.0",
+  "meta": {
+    "uri": "https://commons.wikimedia.org/wiki/Category:Ansgir_(ship,_1922)",
+    "request_id": "5f70a93e-49d4-4355-8c19-32d27425b478",
+    "id": "fac908ec-728f-4f06-87d2-4176f08c2fdf",
+    "domain": "commons.wikimedia.org",
+    "stream": "mediawiki.recentchange",
+    "dt": "2025-10-29T17:42:06.177Z",
+    "topic": "codfw.mediawiki.recentchange",
+    "partition": 0,
+    "offset": 1678036048
+  },
+  "id": 3066112603,
+  "type": "edit",
+  "namespace": 14,
+  "title": "Category:Ansgir (ship, 1922)",
+  "title_url": "https://commons.wikimedia.org/wiki/Category:Ansgir_(ship,_1922)",
+  "comment": "+2 categories",
+  "timestamp": 1761759725,
+  "user": "N. Johannes",
+  "bot": false,
+  "notify_url": "https://commons.wikimedia.org/w/index.php?diff=1106522370&oldid=1032498239&rcid=3066112603",
+  "minor": false,
+  "patrolled": false,
+  "length": {
+    "old": 423,
+    "new": 511
+  },
+  "revision": {
+    "old": 1032498239,
+    "new": 1106522370
+  },
+  "server_url": "https://commons.wikimedia.org",
+  "server_name": "commons.wikimedia.org",
+  "server_script_path": "/w",
+  "wiki": "commonswiki",
+  "parsedcomment": "+2 categories"
+}
