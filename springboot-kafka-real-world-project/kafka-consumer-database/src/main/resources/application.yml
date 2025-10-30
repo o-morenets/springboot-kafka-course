@@ -13,7 +13,7 @@ spring:
       name: wikimedia_stream
 
   datasource:
-    url: jdbc:mysql://localhost:3406/wikimedia
+    url: jdbc:mysql://localhost:3306/wikimedia
     username: root
     password: root
 
