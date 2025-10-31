@@ -3,6 +3,7 @@ package net.javaguides.springboot.event;
 import com.launchdarkly.eventsource.EventHandler;
 import com.launchdarkly.eventsource.EventSource;
 import lombok.RequiredArgsConstructor;
+import net.javaguides.springboot.dto.WikimediaEvent;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class WikimediaChangesProducer {
     @Value("${spring.kafka.topic.name}")
     private String topicName;
 
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, WikimediaEvent> kafkaTemplate;
 
     public void startPublishing() throws InterruptedException {
 

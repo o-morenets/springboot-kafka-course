@@ -5,16 +5,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.launchdarkly.eventsource.EventHandler;
 import com.launchdarkly.eventsource.MessageEvent;
 import lombok.extern.slf4j.Slf4j;
+import net.javaguides.springboot.dto.WikimediaEvent;
 import org.springframework.kafka.core.KafkaTemplate;
 
 @Slf4j
 public class WikimediaChangesHandler implements EventHandler {
     
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, WikimediaEvent> kafkaTemplate;
     private final String topic;
     private final ObjectMapper objectMapper = new ObjectMapper();
     
-    public WikimediaChangesHandler(KafkaTemplate<String, String> kafkaTemplate, String topic) {
+    public WikimediaChangesHandler(KafkaTemplate<String, WikimediaEvent> kafkaTemplate, String topic) {
         this.kafkaTemplate = kafkaTemplate;
         this.topic = topic;
     }
@@ -29,13 +30,14 @@ public class WikimediaChangesHandler implements EventHandler {
             String key = jsonNode.has("title_url") 
                 ? jsonNode.get("title_url").asText() 
                 : null;
-            
+
+            // Parse JSON string into WikimediaEvent object
+            WikimediaEvent event = objectMapper.readValue(data, WikimediaEvent.class);
+
             log.info("Event received with key: '{}', sending to topic: '{}'", key, topic);
-            kafkaTemplate.send(topic, key, data);
-            
+            kafkaTemplate.send(topic, key, event);
         } catch (Exception e) {
-            log.error("Error parsing event data, sending without key: {}", e.getMessage());
-            kafkaTemplate.send(topic, data);
+            log.error("Error parsing event data: {}", e.getMessage());
         }
     }
 
