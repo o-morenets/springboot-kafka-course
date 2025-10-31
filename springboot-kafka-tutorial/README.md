@@ -49,7 +49,7 @@ curl -X POST http://localhost:8080/api/v1/kafka/publish \
 
 ### 4. Monitor Messages
 
-Check the application logs to see consumed messages, or visit the Kafka UI at `http://localhost:8081`
+Check the application logs to see consumed messages, or visit the Kafka UI at `http://localhost:8092`
 
 ## Stop Services
 
