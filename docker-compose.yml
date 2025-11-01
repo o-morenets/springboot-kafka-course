@@ -51,5 +51,13 @@ services:
       timeout: 5s
       retries: 5
 
+# ---------- MYSQL ADMINER ----------
+  adminer:
+    image: adminer
+    ports:
+      - "8006:8080"
+    depends_on:
+      - mysql
+
 volumes:
   mysql_data:
