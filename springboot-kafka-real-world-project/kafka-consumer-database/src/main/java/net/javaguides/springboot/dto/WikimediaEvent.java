@@ -1,9 +1,10 @@
 package net.javaguides.springboot.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
-@Builder
 public record WikimediaEvent(
 
         @JsonProperty("$schema")
@@ -30,28 +31,38 @@ public record WikimediaEvent(
         String wiki,
         String parsedcomment
 ) {
+    @Embeddable
     public record Meta(
+
+            @Column(length = 2000)
             String uri,
+
             String request_id,
-            String id,
+            String meta_id,
             String domain,
             String stream,
             String dt,
             String topic,
+
+            @Column(name = "partition_number")
             int partition,
+
             long offset
     ) {}
 
+    @Embeddable
     public record Length(
-            int old,
+            int old_length,
 
             @JsonProperty("new")
-            int _new // `_new` to avoid reserved word
+            int new_length
     ) {}
 
+    @Embeddable
     public record Revision(
-            long old,
+            long old_revision,
 
-            @JsonProperty("new") long _new
+            @JsonProperty("new")
+            long new_revision
     ) {}
 }

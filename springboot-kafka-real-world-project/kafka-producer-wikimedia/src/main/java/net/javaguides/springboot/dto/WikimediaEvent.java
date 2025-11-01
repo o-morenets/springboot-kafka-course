@@ -1,9 +1,11 @@
 package net.javaguides.springboot.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record WikimediaEvent(
 
         @JsonProperty("$schema")
