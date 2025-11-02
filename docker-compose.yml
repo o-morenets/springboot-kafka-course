@@ -51,7 +51,7 @@ services:
       timeout: 5s
       retries: 5
 
-# ---------- MYSQL ADMINER ----------
+  # ---------- MYSQL ADMINER ----------
   adminer:
     image: adminer
     ports:
