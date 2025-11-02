@@ -56,6 +56,8 @@ services:
     image: adminer
     ports:
       - "8006:8080"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     depends_on:
       - mysql
 
