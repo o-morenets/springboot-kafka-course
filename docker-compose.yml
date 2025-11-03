@@ -3,7 +3,6 @@ services:
   # ---------- KAFKA (KRaft mode) ----------
   kafka:
     image: confluentinc/cp-kafka:7.5.0
-    container_name: kafka
     ports:
       - "9092:9092"
       - "29092:29092"
@@ -24,7 +23,6 @@ services:
   # ---------- KAFKA UI ----------
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
-    container_name: kafka-ui
     ports:
       - "8092:8080"
     depends_on:
@@ -36,7 +34,6 @@ services:
   # ---------- MYSQL DATABASE ----------
   mysql:
     image: mysql:8.0
-    container_name: mysql
     ports:
       - "3306:3306"
     environment:
@@ -54,7 +51,6 @@ services:
   # ---------- MYSQL ADMINER ----------
   adminer:
     image: adminer
-    container_name: adminer
     ports:
       - "8006:8080"
     extra_hosts:
