@@ -52,7 +52,7 @@ services:
   adminer:
     image: adminer
     ports:
-      - "8006:8080"
+      - "8090:8080"
     extra_hosts:
       - "host.docker.internal:host-gateway"
     depends_on:
