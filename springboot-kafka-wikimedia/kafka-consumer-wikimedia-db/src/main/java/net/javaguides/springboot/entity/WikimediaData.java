@@ -31,7 +31,7 @@ public class WikimediaData {
     @Column(length = 2000)
     private String title_url;
 
-    @Column(name = "user_comment", length= 2000)
+    @Column(name = "user_comment", length= 5000)
     private String comment;
 
     @Column(name = "event_timestamp")
@@ -51,6 +51,6 @@ public class WikimediaData {
     private String server_script_path;
     private String wiki;
 
-    @Column(length = 2000)
+    @Column(length = 5000)
     private String parsedcomment;
 }
