@@ -1,9 +1,7 @@
 package net.javaguides.springboot.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import net.javaguides.springboot.dto.WikimediaEvent;
 
 @Entity
@@ -11,6 +9,8 @@ import net.javaguides.springboot.dto.WikimediaEvent;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class WikimediaData {
 
     @Id
